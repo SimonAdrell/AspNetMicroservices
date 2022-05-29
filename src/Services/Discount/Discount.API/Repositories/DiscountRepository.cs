@@ -35,7 +35,7 @@ namespace Discount.API.Repositories
             using var connection = new NpgsqlConnection(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
 
             var affected =
-                await connection.ExecuteAsync("INSERT INTO Coupon(ProductName, Description, Amount) VALUES (@ProductName,@Description,@Amount)"
+                await connection.ExecuteAsync("INSERT INTO Coupon(ProductName, Description, Amount) VALUES (@ProductName,@Description,@Amount)",
                 new { coupon.ProductName, coupon.Description, coupon.Amount });
 
             if (affected == 0)
@@ -63,7 +63,7 @@ namespace Discount.API.Repositories
             using var connection = new NpgsqlConnection(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
 
             var affected =
-                await connection.ExecuteAsync("Update Coupon SET ProductName=@ProductName, Description = @Description, Amount=@Amount WHERE Id=@Id"
+                await connection.ExecuteAsync("Update Coupon SET ProductName=@ProductName, Description = @Description, Amount=@Amount WHERE Id=@Id",
                 new { coupon.ProductName, coupon.Description, coupon.Amount, coupon.Id });
 
             if (affected == 0)
