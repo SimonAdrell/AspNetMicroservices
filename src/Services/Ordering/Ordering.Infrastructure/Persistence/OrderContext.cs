@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Infrastructure.Persistence
 {
-    public class OrderContext : DbContext
+    public class OrderContext 
     {
 
     }
